@@ -659,9 +659,9 @@ const showWishList = () => {
       let diff = Math.abs(now.getTime() - lastUpdate.getTime());
 
       //Faz calculo de dias para mostrar na tela a quantos dias foi feita a última atualização
-      let days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      let days = Math.ceil(diff / (1000 * 60 * 60 * 24))-1 ;
 
-      if (days == 1) {
+      if (days === 1) {
         days = "1 dia atrás";
       } else if (days > 1) {
         days = days + " dias atrás";
