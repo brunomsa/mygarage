@@ -781,3 +781,6 @@ const saveCarList = () =>
 //Função: savar array de desejos no localStorage
 const saveWishList = () =>
   localStorage.setItem("arrayWishes", JSON.stringify(arrayWishes));
+
+//Registrar o service worker na aplicação
+navigator.serviceWorker.register("./app-sw.js");
