@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Garagem</title>
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <nav class="navBar bottom primary">
+      <div>
+        <i class="icon material-icons active" for="garage">home</i>
+        <span>Garagem</span>
+      </div>
+      <div>
+        <i class="icon material-icons" for="wishlist">favorite</i>
+        <span>Desejos</span>
+      </div>
+    </nav>
+
+    <main>
+      <section id="garage" class="component">
+        <div class="componentHeader">
+          <h1 class="componentTitle">
+            <div>Minha</div>
+            Garagem
+          </h1>
+
+          <i id="btnAdd" class="addIcon material-icons">add</i>
+          <img id="img_file" src="" alt="" />
+        </div>
+
+        <div class="componentContent">
+          <div class="spinner">
+            <div class="lds-dual-ring"></div>
+          </div>
+
+          <div id="blank" class="hidden">
+            <div>
+              <i class="material-icons">directions_car</i>
+              <p>Nenhum carro adcionado</p>
+            </div>
+          </div>
+
+          <ul id="favCars" class="hidden"></ul>
+
+          <ul id="allCars" class="hidden"></ul>
+        </div>
+      </section>
+
+      <section id="includeCar" class="component hidden">
+        <div class="componentHeader">
+          <h1 class="componentTitle">Novo Carro</h1>
+          <i id="btnCloseIncludeCar" class="iconClose material-icons">close</i>
+        </div>
+        <div class="componentContent">
+          <form id="formAddCar" novalidate>
+            <div class="field">
+              <label for="inputAddName">Nome:</label>
+              <input
+                id="inputAddName"
+                type="text"
+                autocomplete="off"
+                maxlength="19"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="inputAddYear">Ano:</label>
+              <input
+                id="inputAddYear"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="inputAddKm">Km:</label>
+              <input
+                id="inputAddKm"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="inputAddMarch">Câmbio:</label>
+              <input
+                id="inputAddMarch"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="inputAddEngine">Motor:</label>
+              <input
+                id="inputAddEngine"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="inputAddFuel">Combustível:</label>
+              <input
+                id="inputAddFuel"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+              />
+            </div>
+            <div class="field">
+              <label for="inputAddPower">Potência:</label>
+              <input
+                id="inputAddPower"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+              />
+            </div>
+            <div class="field">
+              <label for="inputAddTraction">Tração:</label>
+              <input
+                id="inputAddTraction"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+              />
+            </div>
+            <div class="field">
+              <label for="inputAddDescription">Descrição:</label>
+              <textarea id="inputAddDescription" rows="3"></textarea>
+            </div>
+            <div class="field upload">
+              <label class="labelImage" for="inputAddImage"
+                >Plano de Fundo:</label
+              >
+              <input
+                id="inputAddImage"
+                type="file"
+                accept=".jpg, .jpeg, .png"
+                class="hidden"
+              />
+              <div>
+                <label for="inputAddImage" class="iconUpload material-icons"
+                  >file_upload</label
+                >
+                <label for="inputAddImage" id="inputAddFilenameImage"></label>
+              </div>
+            </div>
+            <div class="field fav end">
+              <label for="inputAddFav">Marcar como favorito:</label>
+              <input id="inputAddFav" type="checkbox" />
+            </div>
+            <div class="buttonGroup">
+              <button
+                type="reset"
+                id="btnCancelIncludeCar"
+                class="button secondary"
+              >
+                Cancelar
+              </button>
+              <button type="submit" id="btnIncludeCar" class="button primary">
+                Adicionar
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="detailsCar" class="component hidden">
+        <div class="componentContent">
+          <form id="formEditCar">
+            <div class="detailsCarHeader">
+              <div class="detailsCarControls">
+                <i class="btnBack material-icons">arrow_back</i>
+                <div>
+                  <i id="btnEditCar" class="material-icons">edit</i>
+                  <i id="btnCancelEdit" class="material-icons hidden">close</i>
+                  <i id="btnDoneEdit" class="material-icons hidden">done</i>
+                </div>
+              </div>
+              <div class="detailsCarTitle">
+                <div>
+                  <input
+                    id="inputEditYear"
+                    type="text"
+                    class="detailsCarYear"
+                    autocomplete="off"
+                    readonly
+                    maxlength="11"
+                  />
+                  <input
+                    id="inputEditName"
+                    type="text"
+                    class="detailsCarName"
+                    autocomplete="off"
+                    readonly
+                    maxlength="19"
+                  />
+                </div>
+                <i id="btnAddFavorite" class="iconFavStar material-icons"
+                  >star_border
+                </i>
+              </div>
+            </div>
+            <div class="detailsCarContent">
+              <h2>Ficha Técninca</h2>
+              <div class="detailsCarAttachmets">
+                <div>
+                  <div class="attachmentName">
+                    <i class="material-icons">speed</i>
+                    <div>Km</div>
+                  </div>
+                  <input
+                    id="inputEditKm"
+                    type="text"
+                    class="attachmentValue"
+                    autocomplete="off"
+                    readonly
+                    maxlength="11"
+                  />
+                </div>
+                <div>
+                  <div class="attachmentName">
+                    <i class="material-icons">settings_input_component</i>
+                    <div>Câmbio</div>
+                  </div>
+                  <input
+                    id="inputEditMarch"
+                    type="text"
+                    autocomplete="off"
+                    class="attachmentValue"
+                    readonly
+                    maxlength="11"
+                  />
+                </div>
+                <div>
+                  <div class="attachmentName">
+                    <i class="material-icons">settings</i>
+                    <div>Motor</div>
+                  </div>
+                  <input
+                    id="inputEditEngine"
+                    type="text"
+                    autocomplete="off"
+                    class="attachmentValue"
+                    readonly
+                    maxlength="11"
+                  />
+                </div>
+                <div>
+                  <div class="attachmentName">
+                    <i class="material-icons">local_gas_station</i>
+                    <div>Combustível</div>
+                  </div>
+                  <input
+                    id="inputEditFuel"
+                    type="text"
+                    autocomplete="off"
+                    class="attachmentValue"
+                    readonly
+                    maxlength="11"
+                  />
+                </div>
+                <div>
+                  <div class="attachmentName">
+                    <i class="material-icons">offline_bolt</i>
+                    <div>Potência</div>
+                  </div>
+                  <input
+                    id="inputEditPower"
+                    type="text"
+                    autocomplete="off"
+                    class="attachmentValue"
+                    readonly
+                    maxlength="11"
+                  />
+                </div>
+                <div>
+                  <div class="attachmentName">
+                    <i class="material-icons">route</i>
+                    <div>Tração</div>
+                  </div>
+                  <input
+                    id="inputEditTraction"
+                    type="text"
+                    class="attachmentValue"
+                    autocomplete="off"
+                    readonly
+                    maxlength="11"
+                  />
+                </div>
+              </div>
+              <div class="detailsCarDescription">
+                <h2>Descrição</h2>
+                <textarea
+                  id="inputEditDescription"
+                  rows="2"
+                  readonly
+                ></textarea>
+              </div>
+              <div class="detailsCarImage hidden">
+                <label for="inputEditImage"><h2>Imagem</h2></label>
+                <input
+                  id="inputEditImage"
+                  type="file"
+                  accept=".jpg, .jpeg, .png"
+                  class="hidden"
+                />
+                <div>
+                  <label for="inputEditImage" class="iconUpload material-icons"
+                    >file_upload</label
+                  >
+                  <label
+                    for="inputEditImage"
+                    id="inputEditFilenameImage"
+                  ></label>
+                </div>
+              </div>
+              <div class="buttonGroup">
+                <button id="btnDeleteCar" class="button btnDelete">
+                  Apagar carro
+                </button>
+                <button id="btnDoneEdit2" class="button primary hidden">
+                  Alterar carro
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="wishlist" class="component hidden">
+        <div class="componentHeader">
+          <h1 class="componentTitle">
+            <div>Lista de</div>
+            Desejos
+          </h1>
+          <i id="btnAddWish" class="material-icons addIcon">add</i>
+        </div>
+
+        <div class="componentContent">
+          <div id="blankWish" class="hidden">
+            <div>
+              <i class="material-icons">lightbulb</i>
+              <p>Nenhum desejo adcionado</p>
+            </div>
+          </div>
+
+          <ul class="hidden">
+            <li class="wishCars">
+              <div
+                class="wishCarsImg"
+                style="
+                  background-image: linear-gradient(
+                      to bottom,
+                      rgba(0, 0, 0, 0.3),
+                      rgba(0, 0, 0, 0.5)
+                    ),
+                    url('https://picsum.photos/id/6/100');
+                "
+              ></div>
+              <div class="wishCarsAbout">
+                <div class="wishCarsYear">2012</div>
+                <h3 class="wishCarsName">Ford KA</h3>
+                <div class="lastUpdate">2 dias atrás</div>
+              </div>
+              <div class="wishCarsPrice">
+                <div class="">100.000</div>
+                <i class="iconPriceUp material-icons">arrow_upward</i>
+                <i class="iconPriceDown material-icons">arrow_downward</i>
+              </div>
+            </li>
+            <li class="wishCars">
+              <div
+                class="wishCarsImg"
+                style="
+                  background-image: linear-gradient(
+                      to bottom,
+                      rgba(0, 0, 0, 0.3),
+                      rgba(0, 0, 0, 0.5)
+                    ),
+                    url('https://picsum.photos/id/7/300/100');
+                "
+              ></div>
+              <div class="wishCarsAbout">
+                <div class="wishCarsYear">2012</div>
+                <h3 class="wishCarsName">Ford KA</h3>
+                <div class="lastUpdate">2 dias atrás</div>
+              </div>
+              <div class="wishCarsPrice">
+                <div class="price-down">100.000</div>
+                <i class="iconPriceUp material-icons">arrow_upward</i>
+                <i class="iconPriceDown material-icons">arrow_downward</i>
+              </div>
+            </li>
+            <li class="wishCars">
+              <div
+                class="wishCarsImg"
+                style="
+                  background-image: linear-gradient(
+                      to bottom,
+                      rgba(0, 0, 0, 0.3),
+                      rgba(0, 0, 0, 0.5)
+                    ),
+                    url('https://picsum.photos/id/8/300/100');
+                "
+              ></div>
+              <div class="wishCarsAbout">
+                <div class="wishCarsYear">2012</div>
+                <h3 class="wishCarsName">Ford KA</h3>
+                <div class="lastUpdate">2 dias atrás</div>
+              </div>
+              <div class="wishCarsPrice">
+                <div class="price-up">100.000</div>
+                <i class="iconPriceUp material-icons">arrow_upward</i>
+                <i class="iconPriceDown material-icons">arrow_downward</i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="includeWish" class="component hidden">
+        <div class="componentHeader">
+          <h1 class="componentTitle">Novo Desejo</h1>
+          <i id="btnCloseIncludeWish" class="iconClose material-icons">close</i>
+        </div>
+        <div class="componentContent">
+          <form id="formAddWish">
+            <div class="field">
+              <label for="inputAddWishName">Nome:</label>
+              <input
+                id="inputAddWishName"
+                type="text"
+                autocomplete="off"
+                maxlength="15"
+              />
+            </div>
+            <div class="field">
+              <label for="inputAddWishYear">Ano:</label>
+              <input
+                id="inputAddWishYear"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+              />
+            </div>
+            <div class="field">
+              <label for="inputAddWishPrice">Preço:</label>
+              <input
+                id="inputAddWishPrice"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+              />
+            </div>
+            <div class="field upload">
+              <label class="labelImage" for="inputAddWishImage"
+                >Plano de Fundo:</label
+              >
+              <input
+                id="inputAddWishImage"
+                type="file"
+                accept=".jpg, .jpeg, .png"
+                class="hidden"
+              />
+              <div>
+                <label for="inputAddWishImage" class="iconUpload material-icons"
+                  >file_upload</label
+                >
+                <label
+                  for="inputAddWishImage"
+                  id="inputAddWishFilenameImage"
+                ></label>
+              </div>
+            </div>
+            <div class="buttonGroup">
+              <button type="submit" id="btnIncludeWish" class="button primary">
+                Adicionar
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="editWish" class="component hidden">
+        <div class="componentHeader">
+          <h1 class="componentTitle">Editar Desejo</h1>
+          <i id="btnCloseChangeWish" class="iconClose material-icons">close</i>
+        </div>
+        <div class="componentContent">
+          <form id="formEditWish">
+            <div class="field">
+              <label for="inputEditWishName">Nome:</label>
+              <input
+                id="inputEditWishName"
+                type="text"
+                autocomplete="off"
+                maxlength="15"
+              />
+            </div>
+            <div class="field">
+              <label for="inputEditWishYear">Ano:</label>
+              <input
+                id="inputEditWishYear"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+              />
+            </div>
+            <div class="field">
+              <label for="inputEditWishPrice">Preço:</label>
+              <input
+                id="inputEditWishPrice"
+                type="text"
+                autocomplete="off"
+                maxlength="11"
+              />
+            </div>
+            <div class="field upload">
+              <label class="labelImage" for="inputEditWishImage"
+                >Plano de Fundo:</label
+              >
+              <input
+                id="inputEditWishImage"
+                type="file"
+                accept=".jpg, .jpeg, .png"
+                class="hidden"
+              />
+              <div>
+                <label
+                  for="inputEditWishImage"
+                  class="iconUpload material-icons"
+                  >file_upload</label
+                >
+                <label
+                  for="inputEditWishImage"
+                  id="inputEditWishFilenameImage"
+                ></label>
+              </div>
+            </div>
+            <div class="buttonGroup">
+              <button
+                type="reset"
+                id="btnCancelChangeWish"
+                class="button secondary"
+              >
+                Cancelar
+              </button>
+              <button type="submit" id="btnChangeWish" class="button primary">
+                Alterar
+              </button>
+            </div>
+            <button id="btnDeleteWish" class="button btnDelete">
+              Apagar desejo
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
