@@ -170,7 +170,7 @@ button {
 #blankWish,
 .spinner {
   display: flex;
-  height: calc(100vh - 12rem);
+  padding-top: 10rem;
   align-items: center;
   justify-content: center;
   text-align: center;
