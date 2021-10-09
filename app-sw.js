@@ -45,25 +45,19 @@ self.addEventListener("activate", (e) => {
   );
 });
 
-// fetch event
-self.addEventListener('fetch', evt => {
-  // check if request is made by chrome extensions or web page
-  // if request is made for web page url must contains http.
-  if (!(evt.request.url.indexOf('http') === 0)) return; // skip the request. if request is not made with http protocol
-
-  evt.respondWith(
-    caches
-      .match(evt.request)
-      .then(
-        cacheRes =>
-          cacheRes ||
-          fetch(evt.request).then(fetchRes =>
-            caches.open(dynamicNames).then(cache => {
-              cache.put(evt.request.url, fetchRes.clone());
-              return fetchRes;
-            })
-          )
-      )
-      .catch(() => caches.match('/fallback'))
-  );
+// Tenta servir o arquivo do cache atual. Se não for possível,
+// baixa o recurso da web e o armazena localmente, antes de entregar
+// uma cópia para o usuário.
+self.addEventListener('fetch', function (event) {
+  if (!(evt.request.url.indexOf('http') === 0)) return;
+  let resposta = caches.open(cacheName).then((cache) => {
+    return cache.match(event.request).then((recurso) => {
+      if (recurso) return recurso;
+      return fetch(event.request).then((recurso) => {
+        cache.put(event.request, recurso.clone());
+        return recurso;
+      });
+    });
+  });
+  event.respondWith(resposta);
 });
