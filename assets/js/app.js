@@ -783,4 +783,4 @@ const saveWishList = () =>
   localStorage.setItem("arrayWishes", JSON.stringify(arrayWishes));
 
 //Registrar o service worker na aplicação
-navigator.serviceWorker.register("./app-sw.js");
+//navigator.serviceWorker.register("./app-sw.js");
