@@ -786,7 +786,7 @@ const saveWishList = () =>
 if ('serviceWorker' in navigator) {
   // Registra um service worker hospeadado na raiz do
   // site usando o escopo padrão
-  navigator.serviceWorker.register('./sw.js').then(function(registration) {
+  navigator.serviceWorker.register('./assets/js/sw.js').then(function(registration) {
     //console.log('Service worker  registrado com sucesso:', registration);
   }).catch(function(error) {
     console.log('Falha ao Registrar o Service Worker:', error);
