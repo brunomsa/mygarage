@@ -104,7 +104,6 @@
             <div>Minha</div>
             Garagem
           </h1>
-
           <i id="iconAdd" class="addIcon material-icons">add</i>
         </div>
 
@@ -132,7 +131,6 @@
           <i id="btnCloseIncludeCar" class="iconClose material-icons">close</i>
         </div>
         <div class="componentContent">
-          <form id="formAddCar" novalidate>
             <div class="field">
               <label for="inputAddName">Nome:</label>
               <input
@@ -140,7 +138,6 @@
                 type="text"
                 autocomplete="off"
                 maxlength="19"
-                required
               />
             </div>
             <div class="field">
@@ -150,7 +147,6 @@
                 type="text"
                 autocomplete="off"
                 maxlength="11"
-                required
               />
             </div>
             <div class="field">
@@ -160,7 +156,6 @@
                 type="text"
                 autocomplete="off"
                 maxlength="11"
-                required
               />
             </div>
             <div class="field">
@@ -170,7 +165,6 @@
                 type="text"
                 autocomplete="off"
                 maxlength="11"
-                required
               />
             </div>
             <div class="field">
@@ -180,7 +174,6 @@
                 type="text"
                 autocomplete="off"
                 maxlength="11"
-                required
               />
             </div>
             <div class="field">
@@ -270,16 +263,16 @@
                     type="text"
                     class="detailsCarYear"
                     autocomplete="off"
-                    readonly
                     maxlength="11"
+                    readonly
                   />
                   <input
                     id="inputEditName"
                     type="text"
                     class="detailsCarName"
                     autocomplete="off"
-                    readonly
                     maxlength="19"
+                    readonly
                   />
                 </div>
                 <i id="btnAddFavorite" class="iconFavStar material-icons"
@@ -300,8 +293,8 @@
                     type="text"
                     class="attachmentValue"
                     autocomplete="off"
-                    readonly
                     maxlength="11"
+                    readonly
                   />
                 </div>
                 <div>
@@ -312,10 +305,10 @@
                   <input
                     id="inputEditMarch"
                     type="text"
-                    autocomplete="off"
                     class="attachmentValue"
-                    readonly
+                    autocomplete="off"
                     maxlength="11"
+                    readonly
                   />
                 </div>
                 <div>
@@ -326,10 +319,10 @@
                   <input
                     id="inputEditEngine"
                     type="text"
-                    autocomplete="off"
                     class="attachmentValue"
-                    readonly
+                    autocomplete="off"
                     maxlength="11"
+                    readonly
                   />
                 </div>
                 <div>
@@ -340,10 +333,10 @@
                   <input
                     id="inputEditFuel"
                     type="text"
-                    autocomplete="off"
                     class="attachmentValue"
-                    readonly
+                    autocomplete="off"
                     maxlength="11"
+                    readonly
                   />
                 </div>
                 <div>
@@ -354,10 +347,10 @@
                   <input
                     id="inputEditPower"
                     type="text"
-                    autocomplete="off"
                     class="attachmentValue"
-                    readonly
+                    autocomplete="off"
                     maxlength="11"
+                    readonly
                   />
                 </div>
                 <div>
@@ -367,11 +360,11 @@
                   </div>
                   <input
                     id="inputEditTraction"
-                    type="text"
                     class="attachmentValue"
+                    type="text"
                     autocomplete="off"
-                    readonly
                     maxlength="11"
+                    readonly
                   />
                 </div>
               </div>
@@ -388,8 +381,8 @@
                 <input
                   id="inputEditImage"
                   type="file"
-                  accept=".jpg, .jpeg, .png"
                   class="hidden"
+                  accept=".jpg, .jpeg, .png"
                 />
                 <div>
                   <label for="inputEditImage" class="iconUpload material-icons"
@@ -431,77 +424,7 @@
             </div>
           </div>
 
-          <ul class="hidden">
-            <li class="wishCars">
-              <div
-                class="wishCarsImg"
-                style="
-                  background-image: linear-gradient(
-                      to bottom,
-                      rgba(0, 0, 0, 0.3),
-                      rgba(0, 0, 0, 0.5)
-                    ),
-                    url('https://picsum.photos/id/6/100');
-                "
-              ></div>
-              <div class="wishCarsAbout">
-                <div class="wishCarsYear">2012</div>
-                <h3 class="wishCarsName">Ford KA</h3>
-                <div class="lastUpdate">2 dias atrás</div>
-              </div>
-              <div class="wishCarsPrice">
-                <div class="">100.000</div>
-                <i class="iconPriceUp material-icons">arrow_upward</i>
-                <i class="iconPriceDown material-icons">arrow_downward</i>
-              </div>
-            </li>
-            <li class="wishCars">
-              <div
-                class="wishCarsImg"
-                style="
-                  background-image: linear-gradient(
-                      to bottom,
-                      rgba(0, 0, 0, 0.3),
-                      rgba(0, 0, 0, 0.5)
-                    ),
-                    url('https://picsum.photos/id/7/300/100');
-                "
-              ></div>
-              <div class="wishCarsAbout">
-                <div class="wishCarsYear">2012</div>
-                <h3 class="wishCarsName">Ford KA</h3>
-                <div class="lastUpdate">2 dias atrás</div>
-              </div>
-              <div class="wishCarsPrice">
-                <div class="price-down">100.000</div>
-                <i class="iconPriceUp material-icons">arrow_upward</i>
-                <i class="iconPriceDown material-icons">arrow_downward</i>
-              </div>
-            </li>
-            <li class="wishCars">
-              <div
-                class="wishCarsImg"
-                style="
-                  background-image: linear-gradient(
-                      to bottom,
-                      rgba(0, 0, 0, 0.3),
-                      rgba(0, 0, 0, 0.5)
-                    ),
-                    url('https://picsum.photos/id/8/300/100');
-                "
-              ></div>
-              <div class="wishCarsAbout">
-                <div class="wishCarsYear">2012</div>
-                <h3 class="wishCarsName">Ford KA</h3>
-                <div class="lastUpdate">2 dias atrás</div>
-              </div>
-              <div class="wishCarsPrice">
-                <div class="price-up">100.000</div>
-                <i class="iconPriceUp material-icons">arrow_upward</i>
-                <i class="iconPriceDown material-icons">arrow_downward</i>
-              </div>
-            </li>
-          </ul>
+          <ul class="hidden"></ul>
         </div>
       </section>
 
