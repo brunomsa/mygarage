@@ -46,6 +46,8 @@ self.addEventListener('activate', (e) => {
 // baixa o recurso da web e o armazena localmente, antes de entregar
 // uma cópia para o usuário.
 self.addEventListener('fetch', function (event) {
+  if (!(event.request.url.indexOf('http') === 0)) return;
+  
   let resposta = caches.open(cacheName).then((cache) => {
     return cache.match(event.request).then((recurso) => {
       if (recurso) return recurso;
