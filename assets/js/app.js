@@ -272,7 +272,7 @@ const previewFile = (elem, obj, array, arrayName) => {
     //Salva imagem default aleatória no backgroud do elemento informado.
     elem.style.backgroundImage = `
       linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(0, 0, 0, .8)), 
-      url(/assets/img/placeholder_car${random}.png)
+      url(./assets/img/placeholder_car${random}.png)
     `;
   }
 };
