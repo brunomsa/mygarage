@@ -782,16 +782,15 @@ const saveCarList = () =>
 const saveWishList = () =>
   localStorage.setItem("arrayWishes", JSON.stringify(arrayWishes));
 
-
 //Registrar o service worker na aplicação
 if ('serviceWorker' in navigator) {
-  // Registre um service worker hospeado na raiz do
-  // site usando um escopo mais restritivo.
-  navigator.serviceWorker.register('/sw.js').then(function(registration) {
-    console.log('Service worker registrado com sucesso:', registration);
+  // Registra um service worker hospeadado na raiz do
+  // site usando o escopo padrão
+  navigator.serviceWorker.register('./sw.js').then(function(registration) {
+    console.log('Service worker  registrado com sucesso:', registration);
   }).catch(function(error) {
-    console.log('Service worker falhou ao registrar:', error);
+    console.log('Falha ao Registrar o Service Worker:', error);
   });
 } else {
-  console.log('Service workers não é suportado pelo navegador!.');
+  console.log('Service workers não suportado!');
 }
