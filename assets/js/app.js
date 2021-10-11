@@ -131,37 +131,50 @@ onload = () => {
     mostra();
   }
 
-  //Mostra listas de carros para o compenente principal da garagem;
+  //Mostra listas de carros para o compenente principal da garagem.
   showCarsList();
 
-  //Mostra listas de desejos para o compenente principal de desejos;
+  //Mostra listas de desejos para o compenente principal de desejos.
   showWishList();
 
   //Operações que serão realizadas no ícones do cabeçalho.
   document.querySelector(".iconBack").onclick = () => {
+    //Vai para o componente principal.
     goTo("garage");
+
     closeEditMode();
     showCarsList();
     saveCarList();
   };
   document.querySelector("#iconAdd").onclick = () => {
+    //Vai para o componente de inclusão de carros.
     goTo("includeCar");
+
+    //Começa com o input de adcionar nome selecionado.
     inputAddName.focus();
   };
   document.querySelector("#btnCloseIncludeCar").onclick = () => {
+    //Apaga valores dos inputs para não aparecer na próxima vez que entrar no componente de adicionar carro.
     formAddCar.reset();
     inputAddFilenameImage.innerHTML = "";
+
+    //Vai para o componente principal.
     goTo("garage");
   };
 
   //Operações que serão realizadas nos botões do componente de adcionar carro.
   document.querySelector("#btnIncludeCar").onclick = () => {
+    //Não executa comportamento padrão de enviar o formulário e regarregar a página.
     formAddCar.onsubmit = (e) => e.preventDefault();
+
     addCar();
   };
   document.querySelector("#btnCancelIncludeCar").onclick = () => {
+    //Apaga valores dos inputs para não aparecer na próxima vez que entrar no componente de adicionar carro.
     formAddCar.reset();
     inputAddFilenameImage.innerHTML = "";
+
+    //Vai para o componente principal.
     goTo("garage");
   };
 
@@ -175,51 +188,80 @@ onload = () => {
     closeEditMode();
   };
   document.querySelector("#btnDoneEdit").onclick = () => {
+    //Não executa comportamento padrão de enviar o formulário e regarregar a página.
     formEditCar.onsubmit = (e) => e.preventDefault();
+
     editCar();
   };
   document.querySelector("#btnDoneEdit2").onclick = () => {
+    //Não executa comportamento padrão de enviar o formulário e regarregar a página.
     formEditCar.onsubmit = (e) => e.preventDefault();
+
     editCar();
   };
   document.querySelector("#btnDeleteCar").onclick = () => {
+    //Não executa comportamento padrão de enviar o formulário e regarregar a página.
     formEditCar.onsubmit = (e) => e.preventDefault();
+
     removeCar();
+
+    //Vai para o componente principal.
     goTo("garage");
+
     showCarsList();
   };
 
   //Operações que serão realizadas nos botões do componente de adcionar desejo.
   document.querySelector("#btnAddWish").onclick = () => {
+    //Vai para o componente de inclusão de desejos.
     goTo("includeWish");
+
+    //Começa com o input de adcionar nome selecionado.
     inputAddWishName.focus();
   };
   document.querySelector("#btnIncludeWish").onclick = () => {
+    //Não executa comportamento padrão de enviar o formulário e regarregar a página.
     formAddWish.onsubmit = (e) => e.preventDefault();
+
     addWish();
   };
   document.querySelector("#btnChangeWish").onclick = () => {
+    //Não executa comportamento padrão de enviar o formulário e regarregar a página.
     formEditWish.onsubmit = (e) => e.preventDefault();
+
     editWish();
   };
   document.querySelector("#btnCloseIncludeWish").onclick = () => {
+    //Apaga valores dos inputs para não aparecer na próxima vez que entrar no componente de adicionar desejo.
     formAddWish.reset();
     inputAddWishFilenameImage.innerHTML = "";
+
+    //Vai para o componente de lista de desejos.
     goTo("wishlist");
   };
   document.querySelector("#btnCloseChangeWish").onclick = () => {
+    //Apaga valores dos inputs para não aparecer na próxima vez que entrar no componente de adicionar desejo.
     formAddWish.reset();
     inputEditWishFilenameImage.innerHTML = "";
+
+    //Vai para o componente de lista de desejos.
     goTo("wishlist");
   };
   document.querySelector("#btnCancelChangeWish").onclick = () => {
+    //Apaga valores dos inputs para não aparecer na próxima vez que entrar no componente de adicionar desejo.
     formAddWish.reset();
     inputEditWishFilenameImage.innerHTML = "";
+
+    //Vai para o componente de lista de desejos.
     goTo("wishlist");
   };
   document.querySelector("#btnDeleteWish").onclick = () => {
+    //Não executa comportamento padrão de enviar o formulário e regarregar a página.
     formEditWish.onsubmit = (e) => e.preventDefault();
+
     removeWish();
+
+    //Vai para o componente de lista de desejos.
     goTo("wishlist");
     showWishList();
   };
@@ -656,10 +698,10 @@ const showWishList = () => {
 
       let now = new Date();
       let lastUpdate = new Date(w.lastUpdate);
-      let diff = Math.abs(now.getTime() - lastUpdate.getTime())-1;
+      let diff = Math.abs(now.getTime() - lastUpdate.getTime()) - 1;
 
       //Faz calculo de dias para mostrar na tela a quantos dias foi feita a última atualização
-      let days = Math.ceil(diff / (1000 * 60 * 60 * 24))-1 ;
+      let days = Math.ceil(diff / (1000 * 60 * 60 * 24)) - 1;
 
       if (days === 1) {
         days = "1 dia atrás";
@@ -783,14 +825,17 @@ const saveWishList = () =>
   localStorage.setItem("arrayWishes", JSON.stringify(arrayWishes));
 
 //Registrar o service worker na aplicação
-if ('serviceWorker' in navigator) {
+if ("serviceWorker" in navigator) {
   // Registra um service worker hospeadado na raiz do
   // site usando o escopo padrão
-  navigator.serviceWorker.register('./sw.js').then(function(registration) {
-    //console.log('Service worker  registrado com sucesso:', registration);
-  }).catch(function(error) {
-    console.log('Falha ao Registrar o Service Worker:', error);
-  });
+  navigator.serviceWorker
+    .register("./sw.js")
+    .then(function (registration) {
+      //console.log('Service worker  registrado com sucesso:', registration);
+    })
+    .catch(function (error) {
+      console.log("Falha ao Registrar o Service Worker:", error);
+    });
 } else {
-  console.log('Service workers não suportado!');
+  console.log("Service workers não suportado!");
 }
