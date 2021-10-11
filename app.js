@@ -784,4 +784,3 @@ const saveWishList = () =>
 
 //Registrar o service worker na aplicação
 navigator.serviceWorker.register("./app-sw.js");
-//navigator.serviceWorker.register("./app-sw.js");
