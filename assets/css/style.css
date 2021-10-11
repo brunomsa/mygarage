@@ -69,7 +69,7 @@ button {
   width: 100vw;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   height: 2rem;
-  padding: 1.4rem 0;
+  padding: 1.4rem 0 2rem 0;
   z-index: 1;
 }
 
