@@ -824,6 +824,7 @@ const saveCarList = () =>
 const saveWishList = () =>
   localStorage.setItem("arrayWishes", JSON.stringify(arrayWishes));
 
+  
 //Registrar o service worker na aplicação
 if ("serviceWorker" in navigator) {
   // Registra um service worker hospeadado na raiz do
@@ -837,5 +838,5 @@ if ("serviceWorker" in navigator) {
       console.log("Falha ao Registrar o Service Worker:", error);
     });
 } else {
-  console.log("Service workers não suportado!");
+  console.log("Service workers não suportado!"); 
 }
