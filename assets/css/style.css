@@ -70,6 +70,7 @@ button {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   height: 2rem;
   padding: 1.4rem 0;
+  padding-bottom: 2rem;
   z-index: 1;
 }
 
