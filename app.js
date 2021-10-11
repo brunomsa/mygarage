@@ -659,7 +659,7 @@ const showWishList = () => {
       let diff = Math.abs(now.getTime() - lastUpdate.getTime())-1;
 
       //Faz calculo de dias para mostrar na tela a quantos dias foi feita a última atualização
-      let days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      let days = Math.ceil(diff / (1000 * 60 * 60 * 24))-1 ;
 
       if (days === 1) {
         days = "1 dia atrás";
@@ -784,3 +784,4 @@ const saveWishList = () =>
 
 //Registrar o service worker na aplicação
 navigator.serviceWorker.register("./app-sw.js");
+//navigator.serviceWorker.register("./app-sw.js");
