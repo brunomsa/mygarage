@@ -782,12 +782,12 @@ const saveCarList = () =>
 const saveWishList = () =>
   localStorage.setItem("arrayWishes", JSON.stringify(arrayWishes));
 
-  
+
 //Registrar o service worker na aplicação
 if ('serviceWorker' in navigator) {
   // Registre um service worker hospeado na raiz do
   // site usando um escopo mais restritivo.
-  navigator.serviceWorker.register('/sw.js', {scope: './'}).then(function(registration) {
+  navigator.serviceWorker.register('/sw.js').then(function(registration) {
     console.log('Service worker registrado com sucesso:', registration);
   }).catch(function(error) {
     console.log('Service worker falhou ao registrar:', error);
